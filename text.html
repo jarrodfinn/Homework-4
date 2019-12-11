@@ -5,14 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Jarrod's JavaScript Quiz</title>
+
+    <link rel="stylesheet" href="style.css" class="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
+    <div class="navbar">
+        <ul>
+            <li><a href="" id="highscores"></a>View Highscores</li>
+            <li><a href="" id="timer">This is where the timer will run</a></li>
+        </ul>
+    </div>
+    <div id="quiz-intro">
+        <h1>This Quiz is to help you gauge your knowledge of the JavaScript coding language.</h1>
 
+        <p>Click the botton below to get started. Good luck!</p>
+        <hr>
+        <button id="start-button" onclick='document.getElementById("show-quiz").innerHTML = "Let The Quiz Begin!"'
+            onclick="setTimeout(startQuiz, 1000);">Let's Get Started!</button>
+    </div>
+    <div id="show-quiz"></div>
 
+    <script type="text/javascript" src="questions.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
