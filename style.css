@@ -1,19 +1,12 @@
-
-
-
-
-
-
-
-
-
-
-
-
+.choice {
+    display: block;
+}
 #quiz-intro {
     text-align: center;
 };
-
-li {
-    display: inline;
-  };
+#highscores {
+    text-align: left;
+}
+#timer {
+    text-align: right;
+}

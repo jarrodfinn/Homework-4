@@ -14,23 +14,18 @@
 
 <body>
     <div class="navbar">
-        <ul>
-            <li><a href="" id="highscores"></a>View Highscores</li>
-            <li><a href="" id="timer">This is where the timer will run</a></li>
-        </ul>
+        <li><a href="" id="highscores"></a>View Highscores</li>
+        <li><a href="" id="timer">This is where the timer will run</a></li>
     </div>
     <div id="quiz-intro">
         <h1>This Quiz is to help you gauge your knowledge of the JavaScript coding language.</h1>
 
         <p>Click the botton below to get started. Good luck!</p>
         <hr>
-        <button id="start-button" onclick='document.getElementById("show-quiz").innerHTML = "Let The Quiz Begin!"'
-            onclick="setTimeout(startQuiz, 1000);">Let's Get Started!</button>
+        <button id="start-button">Let's Get Started!</button>
     </div>
     <div id="show-quiz"></div>
 
-    <script type="text/javascript" src="questions.js"></script>
-    <script type="text/javascript" src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -40,6 +35,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="questions.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>

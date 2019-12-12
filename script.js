@@ -1,59 +1,94 @@
-// Input Box
-// Event Listener on Input Box
-// Submit button
-// Event Listener on button
-// Form to hold question
-// Form to chooose multiple choice answers
-// Event Listener
-
 // Variables:
-var quizContainer = document.getElementById('quiz');
-var startBtn = document.getElementById('#start-button');
-var quizStart = document.getElementById("#show-quiz");
-var set
+var startBtn = document.getElementById('start-button');
+var quizIntro = document.getElementById('quiz-intro');
+var showQuiz = document.getElementById("show-quiz");
+var currentQuestionIndex = 0;
+var timeLeft = 120;
+var timer = document.getElementById("timer")
+var questions = [
+	{
+		title: "Commonly used data types DO NOT include:",
+		choices: ["strings", "booleans", "alerts", "numbers"],
+		answer: "alerts"
+	},
 
-// add EventListener to "startBtn" to call the startQuiz function
-document.getElementById("start-button").addEventListener("click", startQuiz)
+	{
+		title: "The condition in an if / else statement is enclosed within ____.",
+		choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+		answer: "parentheses"
+	},
 
+	{
+		title: "JavaScript variables are containers for storing:",
+		choices: ["functions", "data values", "questions", "appendex"],
+		answer: "data values"
+	},
 
+	{
+		title: "A JavaScript function is a block of ____ designed to perform a particular task:",
+		choices: ["cheese", "arrays", "code", "arguments"],
+		answer: "code"
+	},
 
-
-
-
-function startQuiz() {
-	// runs for loop through questions
-	for (var i = 0; i < questions.length; i = i + 1);
+	{
+		title: "The Date object is used to work ______ :",
+		choices: ["dates", "functions", "clocks", "strings"],
+		answer: "dates"
+	},
+];
+function displayQuiz() {
+	getQuestion()
+	showQuiz.style.display = "block";
+	document.getElementById("#show-quiz");
 }
+startBtn.addEventListener("click", setTimer)  
 
-// How do you deliver this? Here are some guidelines:
-
-
-// Play proceeds as follows:
-
-
-// The user arrives at the landing page and is presented with a call-to-action to "Start Quiz." Also note the navigation option to "View Highscores" and the "Time" value set at 0.
-
-
-// Clicking the "Start Quiz" button presents the user with a series of questions. The timer is initialized with a value and immediately begins countdown.
-
-
-// Score is calculated by time remaining. Answering quickly and correctly results in a higher score. Answering incorrectly results in a time penalty (for example, 15 seconds are subtracted from time remaining).
-
-
-// When time runs out and/or all questions are answered, the user is presented with their final score and asked to enter their initials. Their final score and initials are then stored in localStorage.
-
-
-
-
-// Your application should also be responsive, ensuring that it adapts to multiple screen sizes.
-
-
-// Refer to the animated GIF below for a demonstration of the application functionality.
-
-
-
-
-
-
-
-
+function setTimer () {
+	displayQuiz();
+	setInterval(function () {
+		timeLeft = timeLeft - 1;
+		timer.textContent = "Time: " + timeLeft;
+		if (timeLeft === 0) {
+			endGame()
+		}
+		console.log (timeLeft)
+	}, 1000)
+}
+function getQuestion() {
+	showQuiz.innerHTML = "";
+	quizIntro.style.display = "none";
+	var currentQuestion = questions[currentQuestionIndex]
+	console.log(currentQuestion)
+	var title = document.createTextNode(currentQuestion.title)
+	showQuiz.appendChild(title)
+	for (var i = 0; i < currentQuestion.choices.length; i = i + 1) {
+		var choiceButton = document.createElement("button")
+		choiceButton.textContent = currentQuestion.choices[i];
+		choiceButton.setAttribute("class", "choice");
+		choiceButton.setAttribute("value", currentQuestion.choices[i])
+		choiceButton.onclick = choiceClick;
+		showQuiz.appendChild(choiceButton);
+	}
+}
+function choiceClick() {
+	if (this.value === questions[currentQuestionIndex].answer) {
+		alert("correct")
+	}
+	else {
+		alert("incorrect")
+	}
+	++currentQuestionIndex;
+	if (currentQuestionIndex === questions.length) {
+		endGame()
+	}
+	else {
+		getQuestion()
+	}
+}
+function endGame() {
+	alert("Game Over")
+	currentQuestionIndex = 0;
+	quizIntro.style.display = "block";
+	showQuiz.style.display = "none";
+	// clear interval function documentation
+}
