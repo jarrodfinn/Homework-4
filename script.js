@@ -1,9 +1,8 @@
-// Variables:
 var startBtn = document.getElementById('start-button');
 var quizIntro = document.getElementById('quiz-intro');
 var showQuiz = document.getElementById("show-quiz");
 var currentQuestionIndex = 0;
-var timeLeft = 120;
+var timeLeft = 60;
 var timer = document.getElementById("timer")
 var questions = [
 	{
@@ -41,18 +40,20 @@ function displayQuiz() {
 	showQuiz.style.display = "block";
 	document.getElementById("#show-quiz");
 }
-startBtn.addEventListener("click", setTimer)  
+startBtn.addEventListener("click", setTimer)
 
-function setTimer () {
+function setTimer() {
 	displayQuiz();
 	setInterval(function () {
 		timeLeft = timeLeft - 1;
 		timer.textContent = "Time: " + timeLeft;
-		if (timeLeft === 0) {
+		if (timeLeft <= 0) {
 			endGame()
 		}
-		console.log (timeLeft)
 	}, 1000)
+}
+function myStopFunction() {
+	clearInterval(setInterval);
 }
 function getQuestion() {
 	showQuiz.innerHTML = "";
@@ -85,10 +86,10 @@ function choiceClick() {
 		getQuestion()
 	}
 }
+
 function endGame() {
 	alert("Game Over")
 	currentQuestionIndex = 0;
 	quizIntro.style.display = "block";
 	showQuiz.style.display = "none";
-	// clear interval function documentation
 }
