@@ -3,7 +3,8 @@ var quizIntro = document.getElementById('quiz-intro');
 var showQuiz = document.getElementById("show-quiz");
 var currentQuestionIndex = 0;
 var timeLeft = 60;
-var timer = document.getElementById("timer")
+var timer = document.getElementById("timer");
+var setInterval;
 var questions = [
 	{
 		title: "Commonly used data types DO NOT include:",
@@ -47,13 +48,13 @@ function setTimer() {
 	setInterval(function () {
 		timeLeft = timeLeft - 1;
 		timer.textContent = "Time: " + timeLeft;
-		if (timeLeft <= 0) {
-			endGame()
+		if (timeLeft === 0) {
+			endGame();
 		}
 	}, 1000)
 }
 function myStopFunction() {
-	clearInterval(setInterval);
+	clearInterval(setTimer);
 }
 function getQuestion() {
 	showQuiz.innerHTML = "";
@@ -92,4 +93,5 @@ function endGame() {
 	currentQuestionIndex = 0;
 	quizIntro.style.display = "block";
 	showQuiz.style.display = "none";
+	time = 0;
 }
